@@ -1,0 +1,16 @@
+#parent{
+    display: inline-block;
+    border: 15px orange solid;
+    box-sizing: border-box;
+}
+img{
+    width: 300px;
+    height: 300px;
+    border: solid green 7px;
+}
+
+#mybtn{
+    background-color: green;
+    width: 400px;
+
+}
