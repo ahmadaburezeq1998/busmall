@@ -23,9 +23,31 @@ function Product(name,src) {
     this.shown=0;
     Product.allproducts.push(this);
     namesarray.push(this.name);
+ 
 }
 
  Product.allproducts=[];
+
+
+ function updatestorage() {
+     
+    let arrayofstringobjects=JSON.stringify(Product.allproducts);
+    localStorage.setItem('allproducts',arrayofstringobjects)
+ }
+
+function getitems() {
+    let data =localStorage.getItem('allproducts');
+    let parseddata=JSON.parse(data);
+
+
+if (parseddata!==null) {
+    Product.allproducts=parseddata;
+}
+   
+    // for (let index = 0; index < array.length; index++) {
+    //     Product.allproducts[index].shown=0;
+    // }
+}
 
 new Product('ahmad1','assets/bag.jpg');
 
@@ -157,7 +179,7 @@ function clickshandler(e) {
             votesarr.push(Product.allproducts[index].votes);
             shownarr.push(Product.allproducts[index].shown);
         }
-        
+        updatestorage();
         showchart();
         jsbtn.removeEventListener('click',showthevotes);
         }
@@ -240,4 +262,4 @@ console.log(namesarray);
           );
     }
 
-  
+    getitems();
